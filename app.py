@@ -10,21 +10,21 @@ def route():
     dest = request.args.get('dest', 'World')  # Default value for dest parameter is 'World'
     return jsonify({'message': f'Hello, from {src} to {dest}!'})
     
-@app.route('/plotGraph')
-def plotGraph():
-    # Generate the figure **without using pyplot**.
-    fig = plot_Graph()
+# @app.route('/plotGraph')
+# def plotGraph():
+#     # Generate the figure **without using pyplot**.
+#     fig = plot_Graph()
 
-    # Save the plot as a temporary image file
-    img_buffer = BytesIO()
-    fig.savefig(img_buffer, format='png')
-    img_buffer.seek(0)
+#     # Save the plot as a temporary image file
+#     img_buffer = BytesIO()
+#     fig.savefig(img_buffer, format='png')
+#     img_buffer.seek(0)
 
-    # Clear the plot to release memory
-    fig.clf()
+#     # Clear the plot to release memory
+#     fig.clf()
 
-    # Return the image file as a response
-    return send_file(img_buffer, mimetype='image/png')
+#     # Return the image file as a response
+#     return send_file(img_buffer, mimetype='image/png')
 
 @app.route("/")
 def start():
