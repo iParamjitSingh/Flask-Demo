@@ -13,12 +13,13 @@ def route():
 @app.route('/getPlot')
 def get_plot():
     # Generate your matplotlib plot
+    fig = Figure()
+    ax = fig.subplots()
+    
     x = [1, 2, 3, 4, 5]
     y = [10, 20, 25, 30, 35]
-    plt.plot(x, y)
-    plt.xlabel('X-axis')
-    plt.ylabel('Y-axis')
-    plt.title('Sample Plot')
+
+    ax.plot(x, y)
 
     # Save the plot as a temporary image file
     img_buffer = io.BytesIO()
