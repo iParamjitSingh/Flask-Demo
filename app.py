@@ -10,13 +10,10 @@ def route():
     dest = request.args.get('dest', 'World')  # Default value for dest parameter is 'World'
     return jsonify({'message': f'Hello, from {src} to {dest}!'})
     
-@app.route('/getPlot')
-def hello():
+@app.route('/plotGraph')
+def plotGraph():
     # Generate the figure **without using pyplot**.
-    fig = Figure()
-    ax = fig.subplots()
-    ax.plot([1, 2])
-
+    fig = plot_Graph()
 
     # Save the plot as a temporary image file
     img_buffer = BytesIO()
