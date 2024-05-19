@@ -11,23 +11,20 @@ def route():
     return jsonify({'message': f'Hello, from {src} to {dest}!'})
     
 @app.route('/getPlot')
-def get_plot():
-    # Generate your matplotlib plot
+def hello():
+    # Generate the figure **without using pyplot**.
     fig = Figure()
     ax = fig.subplots()
-    
-    x = [1, 2, 3, 4, 5]
-    y = [10, 20, 25, 30, 35]
+    ax.plot([1, 2])
 
-    ax.plot(x, y)
 
     # Save the plot as a temporary image file
-    img_buffer = io.BytesIO()
-    plt.savefig(img_buffer, format='png')
+    img_buffer = BytesIO()
+    fig.savefig(img_buffer, format='png')
     img_buffer.seek(0)
 
     # Clear the plot to release memory
-    plt.clf()
+    fig.clf()
 
     # Return the image file as a response
     return send_file(img_buffer, mimetype='image/png')
