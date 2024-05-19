@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_file
 import matplotlib.pyplot as plt
-import io
+from io import BytesIO
 
 app = Flask(__name__)
 
