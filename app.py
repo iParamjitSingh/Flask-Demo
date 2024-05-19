@@ -2,10 +2,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/greet', methods=['GET'])
+@app.route('/route', methods=['GET'])
 def greet():
-    name = request.args.get('name', 'World')
-    return jsonify({'message': f'Hello, {name}!'})
+    src = request.args.get('src', 'Earth')  # Default value for src parameter is 'Earth'
+    dest = request.args.get('dest', 'World')  # Default value for dest parameter is 'World'
+    return jsonify({'message': f'Hello, from {src} to {dest}!'})
 
 @app.route("/")
 def start():
